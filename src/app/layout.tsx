@@ -8,6 +8,7 @@ import { ThemeProvider } from "@/components/context/ThemeProvider";
 import { Inter as FontSans } from "next/font/google";
 
 // Utilidades
+import { Analytics } from "@vercel/analytics/react";
 import { cn } from "@/lib/utils";
 
 const fontSans = FontSans({
@@ -40,6 +41,7 @@ export default function RootLayout({
           disableTransitionOnChange
         >
           {children}
+          <Analytics />
         </ThemeProvider>
       </body>
     </html>
