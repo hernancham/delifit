@@ -20,6 +20,8 @@ const envVars = z.object({
   AUTH_FACEBOOK_SECRET: z.string().optional(),
   AUTH_GITHUB_ID: z.string().optional(),
   AUTH_GITHUB_SECRET: z.string().optional(),
+  // Credentials for the Email
+  AUTH_RESEND_KEY: z.string(),
   // Credentials for Cloudinary
   CLOUDINARY_CLOUD_NAME: z.string(),
   CLOUDINARY_API_KEY: z.string(),
