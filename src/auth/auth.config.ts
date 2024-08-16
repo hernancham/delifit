@@ -17,14 +17,14 @@ export default {
       clientId: process.env.AUTH_GOOGLE_ID,
       clientSecret: process.env.AUTH_GOOGLE_SECRET,
     }),
-    Facebook({
+    /* Facebook({
       clientId: process.env.AUTH_FACEBOOK_ID,
       clientSecret: process.env.AUTH_FACEBOOK_SECRET,
     }),
     GitHub({
       clientId: process.env.AUTH_GITHUB_ID,
       clientSecret: process.env.AUTH_GITHUB_SECRET,
-    }),
+    }), */
     Credentials({
       authorize: async (credentials) => {
         const { data, success } = loginSchema.safeParse(credentials);
