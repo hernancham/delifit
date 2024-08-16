@@ -10,7 +10,7 @@ export const sendEmailVerification = async (email: string, token: string) => {
       subject: "Verify your email",
       html: `
         <p>Click the link below to verify your email</p>
-        <a href="${process.env.NEXTAUTH_URL}/api/auth/verify-email?token=${token}">Verify email</a>
+        <a href="${process.env.NEXT_PUBLIC_API_URL}/auth/verify-email?token=${token}">Verify email</a>
       `,
     });
 
