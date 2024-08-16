@@ -118,18 +118,18 @@ export const LoginForm = ({
         </form>
       </Form>
       <div className='mt-5 space-y-4'>
-        <SocialButton provider='github'>
+        <SocialButton provider='google'>
+          <GoogleLogo className='mr-2 h-4 w-4' />
+          <span>Sign in with Google</span>
+        </SocialButton>
+        {/* <SocialButton provider='github'>
           <GithubLogo className='mr-2 h-4 w-4' />
           <span>Sign in with Github</span>
         </SocialButton>
         <SocialButton provider='facebook'>
           <FacebookLogo className='mr-2 h-4 w-4' />
           <span>Sign in with Facebook</span>
-        </SocialButton>
-        <SocialButton provider='google'>
-          <GoogleLogo className='mr-2 h-4 w-4' />
-          <span>Sign in with Google</span>
-        </SocialButton>
+        </SocialButton> */}
       </div>
     </div>
   );
