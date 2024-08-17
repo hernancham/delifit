@@ -7,12 +7,6 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-enum Role {
-  User  @map("User")
-  Mod   @map("Mod")
-  Admin @map("Admin")
-}
-
 enum TipoDocumento {
   DNI       @map("DNI")
   Pasaporte @map("Pasaporte")
@@ -39,6 +33,12 @@ model User {
   validacion       Boolean       @default(false)
   Account          Account[]
   pedido           pedido[]
+}
+
+enum UserRole {
+  User
+  Mod
+  Admin
 }
 
 model VerificationToken {
@@ -256,18 +256,6 @@ enum EstadoPedido {
   Enviado
 }
 
-enum Role {
-  user
-  admin
-}
-
-enum TipoDocumento {
-  DNI
-  Pasaporte
-  Carnet_de_Extranjer_a @map("Carnet de Extranjería")
-  Otro
-}
-
 enum TipoMedida {
   Paquete
   Botella
@@ -290,10 +278,4 @@ enum TipoPromocion {
 enum UnidadDescuento {
   Porcentaje
   Valor_moneda @map("Valor moneda")
-}
-
-enum UserRole {
-  User
-  Mod
-  Admin
 }
