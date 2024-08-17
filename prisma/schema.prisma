@@ -21,14 +21,14 @@ enum TipoDocumento {
 }
 
 model User {
-  id_usuario    String    @id @default(cuid())
+  id            String    @id @default(cuid())
   name          String?
   email         String    @unique
   emailVerified DateTime?
   image         String?
   password      String?
   puntos        Int       @default(0)
-  rol           Role      @default(User)
+  role          Role      @default(User)
 
   telefono         String?
   fecha_nacimiento DateTime?
@@ -62,7 +62,7 @@ model Account {
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 
-  user User @relation(fields: [userId], references: [id_usuario], onDelete: Cascade)
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
 
   @@id([provider, providerAccountId])
 }
@@ -71,7 +71,7 @@ model Session {
   sessionToken String   @unique
   userId       String
   expires      DateTime
-  user         User     @relation(fields: [userId], references: [id_usuario], onDelete: Cascade)
+  user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
