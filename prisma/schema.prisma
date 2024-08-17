@@ -7,6 +7,19 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+enum Role {
+  User  @map("User")
+  Mod   @map("Mod")
+  Admin @map("Admin")
+}
+
+enum TipoDocumento {
+  DNI       @map("DNI")
+  Pasaporte @map("Pasaporte")
+  Carnet    @map("Carnet de Extranjería")
+  Otro      @map("Otro")
+}
+
 model User {
   id_usuario       String        @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
   image            String?
