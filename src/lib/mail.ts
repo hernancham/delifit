@@ -18,7 +18,7 @@ export const sendEmailVerification = async (email: string, token: string) => {
       success: true,
     };
   } catch (error) {
-    console.log(error);
+    // console.log(error);
     return {
       error: true,
     };

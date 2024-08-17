@@ -1,13 +1,18 @@
 "use server";
 
-import { signIn } from "@/auth/auth";
-import { prisma } from "@/lib/prisma";
-import { loginSchema, registerSchema } from "@/schemas/auth";
+import { signIn, signOut } from "@/auth";
+import {
+  loginSchema,
+  loginType,
+  registerSchema,
+  registerType,
+} from "@/schemas/auth";
 import bcrypt from "bcryptjs";
+import { prisma } from "@/lib/prisma";
+import { defaultRoute } from "@/auth/routes";
 import { AuthError } from "next-auth";
-import { z } from "zod";
 
-export const loginAction = async (values: z.infer<typeof loginSchema>) => {
+export const loginAction = async (values: loginType) => {
   try {
     await signIn("credentials", {
       email: values.email,
@@ -23,9 +28,13 @@ export const loginAction = async (values: z.infer<typeof loginSchema>) => {
   }
 };
 
-export const registerAction = async (
-  values: z.infer<typeof registerSchema>
-) => {
+export const logoutAction = async () => {
+  await signOut({
+    redirectTo: defaultRoute,
+  });
+};
+
+export const registerAction = async (values: registerType) => {
   try {
     const { data, success } = registerSchema.safeParse(values);
     if (!success) {
