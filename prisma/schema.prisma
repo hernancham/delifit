@@ -7,12 +7,6 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-enum Role {
-  User  @map("User")
-  Mod   @map("Mod")
-  Admin @map("Admin")
-}
-
 enum TipoDocumento {
   DNI       @map("DNI")
   Pasaporte @map("Pasaporte")
@@ -21,33 +15,225 @@ enum TipoDocumento {
 }
 
 model User {
-  id            String    @id @default(cuid())
+  id_usuario    String    @id @default(cuid())
   name          String?
   email         String    @unique
   emailVerified DateTime?
   image         String?
   password      String?
   puntos        Int       @default(0)
-  role          Role      @default(User)
+  rol           Role      @default(User)
 
   telefono         String?
-  fecha_nacimiento DateTime?
-  direccion        String?
   documento        String?
-  tipo_doc         TipoDocumento? @default(DNI)
+  tipo_doc         TipoDocumento @default(DNI)
+  puntos           Int           @default(0)
+  rol              UserRole      @default(User)
+  activo           Boolean       @default(true)
+  fecha_nacimiento DateTime?     @db.Date
+  createdat        DateTime      @default(now())
+  updatedat        DateTime
+  validacion       Boolean       @default(false)
+  Account          Account[]
+  pedido           pedido[]
+}
 
-  // pedido           Pedido[]
-  account  Account[]
-  sessions Session[]
+enum UserRole {
+  User
+  Mod
+  Admin
+}
 
-  activo Boolean @default(true)
+model VerificationToken {
+  identifier String
+  token      String
+  expires    DateTime
 
-  createdAt DateTime @default(now())
-  updateAt  DateTime @updatedAt
+  @@id([identifier, token])
+}
+
+model agregado {
+  id_agregado           String                  @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  img_url               String
+  nombre                String
+  precio                Float
+  activo                Boolean                 @default(true)
+  createdat             DateTime                @default(now())
+  updatedat             DateTime
+  agregado_on_categoria agregado_on_categoria[]
+}
+
+model agregado_on_categoria {
+  id_agregado        String             @db.Uuid
+  id_cat_producto    String             @db.Uuid
+  agregado           agregado           @relation(fields: [id_agregado], references: [id_agregado], onDelete: NoAction, onUpdate: NoAction)
+  categoria_producto categoria_producto @relation(fields: [id_cat_producto], references: [id_cat_producto], onDelete: NoAction, onUpdate: NoAction)
+
+  @@id([id_agregado, id_cat_producto])
+}
+
+model categoria_insumo {
+  id_cat_insumo String   @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  nombre        String
+  activo        Boolean  @default(true)
+  insumo        insumo[]
+}
+
+model categoria_producto {
+  id_cat_producto              String                         @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  nombre                       String
+  indicacion                   String?
+  nro_frutas                   Int                            @default(0)
+  nro_toppings                 Int                            @default(0)
+  permite_adicionar            Boolean                        @default(false)
+  activo                       Boolean                        @default(true)
+  agregado_on_categoria        agregado_on_categoria[]
+  descuento_categoria_producto descuento_categoria_producto[]
+  producto                     producto[]
+}
+
+model categoria_promocion {
+  id_cat_promocion String      @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  nombre           String
+  activo           Boolean     @default(true)
+  promocion        promocion[]
+}
+
+model descuento_categoria_producto {
+  id_descuento_categoria String             @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  valor_descuento        Float
+  unidad_descuento       UnidadDescuento
+  cantidad_minima_orden  Int                @default(0)
+  fecha_inicio           DateTime
+  fecha_fin              DateTime
+  id_cat_producto        String             @db.Uuid
+  categoria_producto     categoria_producto @relation(fields: [id_cat_producto], references: [id_cat_producto], onDelete: NoAction, onUpdate: NoAction)
+}
+
+model descuento_producto {
+  id_descuento          String          @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  valor_descuento       Float
+  unidad_descuento      UnidadDescuento
+  cantidad_minima_orden Int             @default(0)
+  fecha_inicio          DateTime
+  fecha_fin             DateTime
+  id_producto           String          @db.Uuid
+  producto              producto        @relation(fields: [id_producto], references: [id_producto], onDelete: NoAction, onUpdate: NoAction)
+}
+
+model insumo {
+  id_insumo        String           @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  img_url          String
+  nombre           String
+  cantidad         Float
+  medida           TipoMedida?
+  activo           Boolean          @default(true)
+  id_cat_insumo    String           @db.Uuid
+  createdat        DateTime
+  updatedat        DateTime
+  categoria_insumo categoria_insumo @relation(fields: [id_cat_insumo], references: [id_cat_insumo], onDelete: NoAction, onUpdate: NoAction)
+}
+
+model lista_producto {
+  id_pedido       String   @db.Uuid
+  id_producto     String   @db.Uuid
+  cantidad        Int
+  precio_cantidad Float
+  pedido          pedido   @relation(fields: [id_pedido], references: [id_pedido], onDelete: NoAction, onUpdate: NoAction)
+  producto        producto @relation(fields: [id_producto], references: [id_producto], onDelete: NoAction, onUpdate: NoAction)
+
+  @@id([id_pedido, id_producto])
+}
+
+model lista_promocion {
+  id_pedido       String    @db.Uuid
+  id_promocion    String    @db.Uuid
+  cantidad        Int
+  precio_cantidad Float
+  pedido          pedido    @relation(fields: [id_pedido], references: [id_pedido], onDelete: NoAction, onUpdate: NoAction)
+  promocion       promocion @relation(fields: [id_promocion], references: [id_promocion], onDelete: NoAction, onUpdate: NoAction)
+
+  @@id([id_pedido, id_promocion])
+}
+
+model pedido {
+  id_pedido       String            @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  subtotal        Float
+  desc_promocion  Float
+  desc_puntos     Float?
+  impuesto        Float
+  total           Float
+  estado_pedido   EstadoPedido      @default(Procesando)
+  createdat       DateTime          @default(now())
+  updatedat       DateTime
+  id_usuario      String            @db.Uuid
+  lista_producto  lista_producto[]
+  lista_promocion lista_promocion[]
+  User            User              @relation(fields: [id_usuario], references: [id_usuario], onDelete: NoAction, onUpdate: NoAction)
+}
+
+model producto {
+  id_producto           String                  @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  img_url               String
+  nombre                String
+  descripcion           String
+  agregados             String[]
+  id_cat_producto       String                  @db.Uuid
+  activo                Boolean                 @default(true)
+  createdat             DateTime                @default(now())
+  updatedat             DateTime
+  descuento_producto    descuento_producto[]
+  lista_producto        lista_producto[]
+  categoria_producto    categoria_producto      @relation(fields: [id_cat_producto], references: [id_cat_producto], onDelete: NoAction, onUpdate: NoAction)
+  producto_on_promocion producto_on_promocion[]
+  producto_tamanio      producto_tamanio[]
+}
+
+model producto_on_promocion {
+  id_promocion String    @db.Uuid
+  id_producto  String    @db.Uuid
+  cantidad     Float
+  producto     producto  @relation(fields: [id_producto], references: [id_producto], onDelete: NoAction, onUpdate: NoAction)
+  promocion    promocion @relation(fields: [id_promocion], references: [id_promocion], onDelete: NoAction, onUpdate: NoAction)
+
+  @@id([id_promocion, id_producto])
+}
+
+model producto_tamanio {
+  id_producto_tamanio String   @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  id_producto         String   @db.Uuid
+  tamanio             String?
+  precio              Float
+  precio_puntos       Int?
+  activo              Boolean  @default(true)
+  createdat           DateTime @default(now())
+  updatedat           DateTime
+  producto            producto @relation(fields: [id_producto], references: [id_producto], onDelete: NoAction, onUpdate: NoAction)
+}
+
+model promocion {
+  id_promocion          String                  @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  img_url               String
+  nombre                String
+  descripcion           String
+  precio_base           Float
+  precio_oferta         Float
+  estado_promocion      Boolean                 @default(false)
+  tipo_promocion        TipoPromocion
+  dias_aplicacion       String[]
+  fecha_inicio          DateTime
+  fecha_fin             DateTime
+  activo                Boolean                 @default(true)
+  id_cat_promocion      String                  @db.Uuid
+  createdat             DateTime                @default(now())
+  updatedat             DateTime
+  lista_promocion       lista_promocion[]
+  producto_on_promocion producto_on_promocion[]
+  categoria_promocion   categoria_promocion     @relation(fields: [id_cat_promocion], references: [id_cat_promocion], onDelete: NoAction, onUpdate: NoAction)
 }
 
 model Account {
-  userId            String
+  userId            String  @db.Uuid
   type              String
   provider          String
   providerAccountId String
@@ -62,7 +248,7 @@ model Account {
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 
-  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+  user User @relation(fields: [userId], references: [id_usuario], onDelete: Cascade)
 
   @@id([provider, providerAccountId])
 }
@@ -71,7 +257,7 @@ model Session {
   sessionToken String   @unique
   userId       String
   expires      DateTime
-  user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  user         User     @relation(fields: [userId], references: [id_usuario], onDelete: Cascade)
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
