@@ -7,11 +7,11 @@ import Credentials from "next-auth/providers/credentials";
 import { sendEmailVerification } from "@/lib/mail";
 
 import Google from "next-auth/providers/google";
-import Facebook from "next-auth/providers/facebook";
-import GitHub from "next-auth/providers/github";
+/* import Facebook from "next-auth/providers/facebook";
+import GitHub from "next-auth/providers/github"; */
 
 // Notice this is only an object, not a full Auth.js instance
-export default {
+export const authConfig = {
   providers: [
     Google({
       clientId: process.env.AUTH_GOOGLE_ID,
