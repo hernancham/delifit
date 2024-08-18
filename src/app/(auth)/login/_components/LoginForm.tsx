@@ -21,6 +21,7 @@ import { useState, useTransition } from "react";
 
 import { GoogleLogo, FacebookLogo, GithubLogo } from "@/components/logos";
 import { SocialButton } from "./SocialButton";
+import { defaultRoute } from "@/auth/routes";
 
 interface LoginFormProps {
   isVerified: boolean;
@@ -50,7 +51,7 @@ export const LoginForm = ({
       if (response.error) {
         setError(response.error);
       } else {
-        router.push("/dashboard");
+        router.push(defaultRoute);
       }
     });
   }
@@ -60,13 +61,13 @@ export const LoginForm = ({
       <h1 className='mb-5 text-center text-2xl'>Login</h1>
       {isVerified && (
         <p className='text-center text-green-500 mb-5 text-sm'>
-          Email verified, you can now login
+          Email verificado, ahora puedes iniciar sesión
         </p>
       )}
       {OAuthAccountNotLinked && (
         <p className='text-center text-red-500 mb-5 text-sm'>
-          To confirm your identity, sign in with the same account you used
-          originally.
+          Para confirmar tu identidad, inicia sesión con la misma cuenta que
+          usaste originalmente.
         </p>
       )}
       <Form {...form}>

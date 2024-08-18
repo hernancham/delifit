@@ -61,11 +61,11 @@ export const registerAction = async (values: registerType) => {
       if (oauthAccounts.length > 0) {
         return {
           error:
-            "To confirm your identity, sign in with the same account you used originally.",
+            "Confirmar tu identidad, inicia sesión con la misma cuenta que usaste originalmente.",
         };
       }
       return {
-        error: "User already exists",
+        error: "El usuario ya existe",
       };
     }
 

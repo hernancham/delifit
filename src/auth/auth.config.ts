@@ -30,7 +30,7 @@ export const authConfig = {
         const { data, success } = loginSchema.safeParse(credentials);
 
         if (!success) {
-          throw new Error("Invalid credentials");
+          throw new Error("Credenciales inválidas");
         }
 
         // verificar si existe el usuario en la base de datos
@@ -41,14 +41,14 @@ export const authConfig = {
         });
 
         if (!user || !user.password) {
-          throw new Error("No user found");
+          throw new Error("Usuario no encontrado");
         }
 
         // verificar si la contraseña es correcta
         const isValid = await bcrypt.compare(data.password, user.password);
 
         if (!isValid) {
-          throw new Error("Incorrect password");
+          throw new Error("Contraseña incorrecta");
         }
 
         // verificación de email
@@ -81,7 +81,7 @@ export const authConfig = {
           // enviar email de verificación
           await sendEmailVerification(user.email, token);
 
-          throw new Error("Please check Email send verification");
+          throw new Error("Por favor, verifica tu Email");
         }
 
         return user;

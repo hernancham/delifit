@@ -18,6 +18,7 @@ import {
 import { Input } from "@/components/ui/input";
 import { useRouter } from "next/navigation";
 import { useState, useTransition } from "react";
+import { defaultRoute } from "@/auth/routes";
 
 export const RegisterForm = () => {
   const [error, setError] = useState<string | null>(null);
@@ -40,7 +41,7 @@ export const RegisterForm = () => {
       if (response.error) {
         setError(response.error);
       } else {
-        router.push("/dashboard");
+        router.push(defaultRoute);
       }
     });
   }
