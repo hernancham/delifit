@@ -1,3 +1,4 @@
+import { LoginCard } from "./_components/LoginCard";
 import { LoginForm } from "./_components/LoginForm";
 
 export default function LoginPage({
@@ -10,7 +11,7 @@ export default function LoginPage({
 
   return (
     <div>
-      <LoginForm
+      <LoginCard
         isVerified={isVerified}
         OAuthAccountNotLinked={OAuthAccountNotLinked}
       />

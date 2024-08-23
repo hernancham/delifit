@@ -13,5 +13,12 @@ export const SocialButton = ({ children, provider }: SocialButtonProps) => {
     await signIn(provider);
   };
 
-  return <Button onClick={handleClick}>{children}</Button>;
+  return (
+    <Button
+      onClick={handleClick}
+      className='w-full'
+    >
+      {children}
+    </Button>
+  );
 };
