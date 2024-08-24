@@ -1,25 +1,12 @@
-enum Role {
-  User  @map("User")
-  Mod   @map("Mod")
-  Admin @map("Admin")
-}
-
-enum TipoDocumento {
-  DNI       @map("DNI")
-  Pasaporte @map("Pasaporte")
-  Carnet    @map("Carnet de Extranjería")
-  Otro      @map("Otro")
-}
-
 model User {
-  id            String    @id @default(cuid())
+  id            String    @id @default(dbgenerated("gen_random_uuid()")) @map("id_usuario") @db.Uuid
   name          String?
   email         String    @unique
-  emailVerified DateTime? @map("email_verified")
+  emailVerified DateTime?
   image         String?
   password      String?
   puntos        Int       @default(0)
-  role          Role      @default(User)
+  rol           UserRole  @default(User)
 
   telefono         String?
   fecha_nacimiento DateTime?
@@ -36,6 +23,7 @@ model User {
   createdAt DateTime @default(now())
   updateAt  DateTime @updatedAt
 
+  @@unique([email, documento, telefono], map: "datos_usuario_unicos")
   @@map("usuario")
 }
 
@@ -62,8 +50,8 @@ model Account {
 }
 
 model Session {
-  sessionToken String   @unique @map("session_token")
-  userId       String   @map("user_id")
+  sessionToken String   @unique
+  userId       String
   expires      DateTime
   user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
 
