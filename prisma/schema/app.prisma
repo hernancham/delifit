@@ -181,6 +181,7 @@ model Pedido_detalle_promocion {
   promocion             Promocion?              @relation(fields: [id_promocion], references: [id_promocion], onDelete: NoAction, onUpdate: NoAction)
 
   @@unique([id_pedido, id_promocion], map: "unique_pedido_detalle_prom")
+  @@map("pedido_detalle_promocion")
 }
 
 model Producto_on_combo {
