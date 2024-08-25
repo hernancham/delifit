@@ -25,15 +25,17 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
     // Aquí es donde puedes agregar información adicional al token.
     jwt({ token, user }) {
       if (user) {
-        token.role = user.role;
+        token.rol = user.rol;
+        token.id = user.id;
       }
       return token;
     },
     // session() se utiliza para agregar la información del token a la sesión del usuario,
     // lo que hace que esté disponible en el cliente.
     session({ session, token }) {
-      if (session.user) {
-        session.user.role = token.role;
+      if (session.user && token.id) {
+        session.user.rol = token.rol;
+        session.user.id = token.id;
       }
       return session;
     },

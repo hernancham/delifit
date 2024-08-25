@@ -24,6 +24,7 @@ export const loginAction = async (values: loginType) => {
     if (error instanceof AuthError) {
       return { error: error.cause?.err?.message };
     }
+    // console.error(error);
     return { error: "error 500" };
   }
 };
@@ -92,6 +93,7 @@ export const registerAction = async (values: registerType) => {
     if (error instanceof AuthError) {
       return { error: error.cause?.err?.message };
     }
+    console.error(error);
     return { error: "error 500" };
   }
 };
