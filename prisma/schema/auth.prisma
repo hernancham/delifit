@@ -2,7 +2,7 @@ model User {
   id            String    @id @default(dbgenerated("gen_random_uuid()")) @map("id_usuario") @db.Uuid
   name          String?
   email         String    @unique
-  emailVerified DateTime?
+  emailVerified DateTime? @map("email_verified")
   image         String?
   password      String?
   puntos        Int       @default(0)
