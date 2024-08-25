@@ -24,9 +24,9 @@ export const LoginCard = ({
   OAuthAccountNotLinked,
 }: LoginCardProps) => {
   return (
-    <div className='min-h-screen text-mcd-black lg:grid lg:grid-cols-[3fr_2fr] lg:gap-12'>
+    <div className='min-h-screen text-mcd-black lg:grid lg:grid-cols-[3fr_2fr] lg:gap-x-16'>
       <div className='relative hidden lg:flex lg:items-center lg:justify-center'>
-        <div className="bg-[url('/media/img1_login.jpg')] bg-center bg-cover w-[90%] h-[90vh] rounded-lg border border-gray-300 overflow-hidden"></div>
+        <div className="bg-[url('/media/img1_login.jpg')] bg-center bg-cover w-[90%] h-[80vh] rounded-lg border border-gray-300 overflow-hidden"></div>
       </div>
       <main className='flex items-center justify-center p-8 lg:p-0'>
         <div className='flex flex-col items-center justify-center max-lg:mt-28'>

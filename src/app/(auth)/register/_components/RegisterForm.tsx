@@ -31,6 +31,7 @@ export const RegisterForm = () => {
       name: "",
       email: "",
       password: "",
+      confirmPassword: "",
     },
   });
 
@@ -47,73 +48,106 @@ export const RegisterForm = () => {
   }
 
   return (
-    <div className='max-w-52'>
-      <h1>Register</h1>
-      <Form {...form}>
-        <form
-          onSubmit={form.handleSubmit(onSubmit)}
-          className='space-y-8'
+    <Form {...form}>
+      <form
+        onSubmit={form.handleSubmit(onSubmit)}
+        className='space-y-3'
+      >
+        <FormField
+          control={form.control}
+          name='name'
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel className='max-sm:text-lg sm:text-base'>
+                Nombres
+              </FormLabel>
+              <FormControl>
+                <Input
+                  {...field}
+                  disabled={isPending}
+                  type='text'
+                  placeholder='Ingresa tus nombres'
+                  className='dark:border-graphite-deep'
+                />
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+
+        <FormField
+          control={form.control}
+          name='email'
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel className='max-sm:text-lg sm:text-base'>
+                Correo electrónico
+              </FormLabel>
+              <FormControl>
+                <Input
+                  {...field}
+                  disabled={isPending}
+                  type='email'
+                  placeholder='Ingresa tu correo electrónico'
+                  className='dark:border-graphite-deep'
+                />
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+        <FormField
+          control={form.control}
+          name='password'
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel className='max-sm:text-lg sm:text-base'>
+                Contraseña
+              </FormLabel>
+              <FormControl>
+                <Input
+                  {...field}
+                  disabled={isPending}
+                  type='password'
+                  placeholder='Ingresa tu contraseña'
+                  className='dark:border-graphite-deep'
+                />
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+        <FormField
+          control={form.control}
+          name='password'
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel className='max-sm:text-lg sm:text-base'>
+                Confirmar Contraseña
+              </FormLabel>
+              <FormControl>
+                <Input
+                  {...field}
+                  disabled={isPending}
+                  type='confirmPassword'
+                  placeholder='Repite tu contraseña'
+                  className='dark:border-graphite-deep'
+                />
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+        {error && <FormMessage>{error}</FormMessage>}
+        <Button
+          disabled={isPending}
+          type='submit'
+          variant='outline'
+          className='w-full text-lg'
         >
-          <FormField
-            control={form.control}
-            name='name'
-            render={({ field }) => (
-              <FormItem>
-                <FormLabel>Name</FormLabel>
-                <FormControl>
-                  <Input
-                    placeholder='Name'
-                    type='text'
-                    {...field}
-                  />
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
-          <FormField
-            control={form.control}
-            name='email'
-            render={({ field }) => (
-              <FormItem>
-                <FormLabel>Email</FormLabel>
-                <FormControl>
-                  <Input
-                    placeholder='email'
-                    type='email'
-                    {...field}
-                  />
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
-          <FormField
-            control={form.control}
-            name='password'
-            render={({ field }) => (
-              <FormItem>
-                <FormLabel>Password</FormLabel>
-                <FormControl>
-                  <Input
-                    placeholder='password'
-                    type='password'
-                    {...field}
-                  />
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
-          {error && <FormMessage>{error}</FormMessage>}
-          <Button
-            type='submit'
-            disabled={isPending}
-          >
-            Submit
-          </Button>
-        </form>
-      </Form>
-    </div>
+          Registrar
+        </Button>
+      </form>
+    </Form>
   );
 };

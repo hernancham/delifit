@@ -2,32 +2,40 @@ import { z } from "zod";
 
 export const loginSchema = z.object({
   email: z
-    .string({ required_error: "Email is required" })
-    .min(1, "Email is required")
-    .email("Invalid email"),
+    .string({ required_error: "El correo electrónico es obligatorio" })
+    .min(1, "El correo electrónico es obligatorio")
+    .email("Correo electrónico no válido"),
   password: z
-    .string({ required_error: "Password is required" })
-    .min(1, "Password is required")
-    .min(6, "Password must be more than 6 characters")
-    .max(32, "Password must be less than 32 characters"),
+    .string({ required_error: "La contraseña es obligatoria" })
+    .min(1, "La contraseña es obligatoria")
+    .min(6, "Debe tener al menos 6 caracteres")
+    .max(32, "Debe tener menos de 32 caracteres"),
 });
 
 export type loginType = z.infer<typeof loginSchema>;
 
-export const registerSchema = z.object({
-  name: z
-    .string({ required_error: "Name is required" })
-    .min(1, "Name is required")
-    .max(32, "Name must be less than 32 characters"),
-  email: z
-    .string({ required_error: "Email is required" })
-    .min(1, "Email is required")
-    .email("Invalid email"),
-  password: z
-    .string({ required_error: "Password is required" })
-    .min(1, "Password is required")
-    .min(6, "Password must be more than 6 characters")
-    .max(32, "Password must be less than 32 characters"),
-});
+export const registerSchema = z
+  .object({
+    name: z
+      .string({ required_error: "El nombre es obligatorio" })
+      .min(1, "El nombre es obligatorio")
+      .max(32, "El nombre debe tener menos de 32 caracteres"),
+    email: z
+      .string({ required_error: "El correo electrónico es obligatorio" })
+      .min(1, "El correo electrónico es obligatorio")
+      .email("Correo electrónico no válido"),
+    password: z
+      .string({ required_error: "La contraseña es obligatoria" })
+      .min(6, "Debe tener al menos 6 caracteres")
+      .max(32, "Debe tener menos de 32 caracteres"),
+    confirmPassword: z
+      .string({ required_error: "Confirmar la contraseña es obligatorio" })
+      .min(6, "Debe tener al menos 6 caracteres")
+      .max(32, "Debe tener menos de 32 caracteres"),
+  })
+  .refine((data) => data.password === data.confirmPassword, {
+    message: "Las contraseñas no coinciden",
+    path: ["confirmPassword"],
+  });
 
 export type registerType = z.infer<typeof registerSchema>;
