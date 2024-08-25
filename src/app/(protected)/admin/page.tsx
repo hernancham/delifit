@@ -1,12 +1,12 @@
 import { auth } from "@/auth";
-import { Role } from "@prisma/client";
+import { UserRole } from "@prisma/client";
 
 export default async function Page() {
   const session = await auth();
 
   // console.log(session);
 
-  if (session?.user?.role !== Role.Admin) {
+  if (session?.user?.rol !== UserRole.Admin) {
     return <div>No tienes el rol de Admin</div>;
   }
 
