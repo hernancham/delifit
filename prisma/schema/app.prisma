@@ -320,10 +320,10 @@ enum TipoDocumento {
 enum Dia_semana {
   Lunes
   Martes
-  Mi_rcoles @map("Miércoles")
+  Miercoles @map("Miércoles")
   Jueves
   Viernes
-  S_bado    @map("Sábado")
+  Sabado    @map("Sábado")
   Domingo
 }
 

@@ -119,7 +119,7 @@ export const RegisterForm = () => {
         />
         <FormField
           control={form.control}
-          name='password'
+          name='confirmPassword'
           render={({ field }) => (
             <FormItem>
               <FormLabel className='max-sm:text-lg sm:text-base'>
@@ -129,7 +129,7 @@ export const RegisterForm = () => {
                 <Input
                   {...field}
                   disabled={isPending}
-                  type='confirmPassword'
+                  type='password'
                   placeholder='Repite tu contraseña'
                   className='dark:border-graphite-deep'
                 />
