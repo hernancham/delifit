@@ -1,5 +1,4 @@
 import Link from "next/link";
-import { loginAction, logoutAction, registerAction } from "@/actions/auth";
 
 export const Navbar = () => {
   return (
