@@ -9,11 +9,22 @@ export default function LoginPage({
   const OAuthAccountNotLinked = searchParams.error === "OAuthAccountNotLinked";
 
   return (
-    <div>
-      <LoginCard
-        isVerified={isVerified}
-        OAuthAccountNotLinked={OAuthAccountNotLinked}
-      />
+    <div className='w-full min-h-screen grid grid-cols-1 lg:grid-cols-2 py-4'>
+      <div className='hidden bg-muted lg:block'>
+        <img
+          src='/media/img1_register.jpg'
+          alt='Image'
+          width={1920}
+          height={1080}
+          className='h-full w-full object-cover'
+        />
+      </div>
+      <div className='flex items-center justify-center'>
+        <LoginCard
+          isVerified={isVerified}
+          OAuthAccountNotLinked={OAuthAccountNotLinked}
+        />
+      </div>
     </div>
   );
 }
