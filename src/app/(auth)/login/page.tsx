@@ -19,7 +19,7 @@ export default function LoginPage({
           className='h-full w-full object-cover'
         />
       </div>
-      <div className='flex items-center justify-center'>
+      <div className='flex flex-col items-center justify-center'>
         <LoginCard
           isVerified={isVerified}
           OAuthAccountNotLinked={OAuthAccountNotLinked}

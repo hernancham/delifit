@@ -1,18 +1,11 @@
+import { DelifitLogo } from "@/components/custom/DelifitLogo";
 import Link from "next/link";
 
 export const Navbar = () => {
   return (
     <header className='bg-white'>
       <div className='mx-auto flex h-16 max-w-screen-xl items-center gap-8 px-4 sm:px-6 lg:px-8'>
-        <Link href='/'>
-          <span className='sr-only'>Home</span>
-          <img
-            src='/assets/delifit_logo.svg'
-            alt='logo delifit'
-            className='h-8'
-          />
-        </Link>
-
+        <DelifitLogo className='bg-lime-100 rounded-full' />
         <div className='flex flex-1 items-center justify-end md:justify-between'>
           <nav className='hidden md:block'>
             <ul className='flex items-center gap-6 text-sm'>

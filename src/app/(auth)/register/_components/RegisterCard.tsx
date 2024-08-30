@@ -11,36 +11,27 @@ import {
 } from "@/components/ui/card";
 import { RegisterForm } from "./RegisterForm";
 import { loginRoute } from "@/auth/routes";
+import { DelifitLogo } from "@/components/custom/DelifitLogo";
 
 export const RegisterCard = () => {
   return (
-    <Card className='max-w-md shadow-md'>
+    <Card className='relative max-w-md shadow-md pt-12'>
+      <div className='absolute inset-x-0 -top-14 flex justify-center'>
+        <DelifitLogo className='bg-lime-50 shadow-md size-28 rounded-full' />
+      </div>
       <CardHeader>
-        <Link
-          href='/'
-          className='flex items-center justify-center mx-auto mb-2 bg-lime-50 rounded-full size-28 '
-        >
-          <span className='sr-only'>Home</span>
-          <img
-            src='/assets/delifit_logo.svg'
-            alt='logo delifit'
-            width={20}
-            height={20}
-            className='size-4/5'
-          />
-        </Link>
         <CardTitle className='text-3xl font-semibold text-center'>
           Registrar cuenta
         </CardTitle>
-        <CardDescription className='text-center'>
+        <CardDescription className='text-center text-balance'>
           Crea una cuenta para empezar a disfrutar de nuestros servicios
         </CardDescription>
       </CardHeader>
       <CardContent>
         <RegisterForm />
       </CardContent>
-      <CardFooter className='flex justify-center'>
-        <div className='text-sm text-center'>
+      <CardFooter>
+        <div className='w-full text-sm text-center'>
           ¿Ya tienes una cuenta?{" "}
           <Link
             href={loginRoute}
