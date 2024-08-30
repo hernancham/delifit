@@ -49,7 +49,7 @@ export const LoginForm = () => {
     <Form {...form}>
       <form
         onSubmit={form.handleSubmit(onSubmit)}
-        className='space-y-4 dark:text-white'
+        className='space-y-3'
       >
         <FormField
           control={form.control}
@@ -63,7 +63,6 @@ export const LoginForm = () => {
                   disabled={isPending}
                   type='email'
                   placeholder='Ingresa tu email'
-                  className='dark:border-graphite-deep'
                 />
               </FormControl>
               <FormMessage />
@@ -82,7 +81,6 @@ export const LoginForm = () => {
                   disabled={isPending}
                   type='password'
                   placeholder='Ingresa tu contraseña'
-                  className='dark:border-graphite-deep'
                 />
               </FormControl>
               <FormMessage />

@@ -19,6 +19,7 @@ import { Input } from "@/components/ui/input";
 import { useRouter } from "next/navigation";
 import { useState, useTransition } from "react";
 import { defaultRoute } from "@/auth/routes";
+import Link from "next/link";
 
 export const RegisterForm = () => {
   const [error, setError] = useState<string | null>(null);
@@ -58,16 +59,13 @@ export const RegisterForm = () => {
           name='name'
           render={({ field }) => (
             <FormItem>
-              <FormLabel className='max-sm:text-lg sm:text-base'>
-                Nombres
-              </FormLabel>
+              <FormLabel>Nombres</FormLabel>
               <FormControl>
                 <Input
                   {...field}
                   disabled={isPending}
                   type='text'
                   placeholder='Ingresa tus nombres'
-                  className='dark:border-graphite-deep'
                 />
               </FormControl>
               <FormMessage />
@@ -80,16 +78,13 @@ export const RegisterForm = () => {
           name='email'
           render={({ field }) => (
             <FormItem>
-              <FormLabel className='max-sm:text-lg sm:text-base'>
-                Correo electrónico
-              </FormLabel>
+              <FormLabel>Correo electrónico</FormLabel>
               <FormControl>
                 <Input
                   {...field}
                   disabled={isPending}
                   type='email'
                   placeholder='Ingresa tu correo electrónico'
-                  className='dark:border-graphite-deep'
                 />
               </FormControl>
               <FormMessage />
@@ -101,16 +96,21 @@ export const RegisterForm = () => {
           name='password'
           render={({ field }) => (
             <FormItem>
-              <FormLabel className='max-sm:text-lg sm:text-base'>
-                Contraseña
-              </FormLabel>
+              <div className='flex items-center'>
+                <FormLabel>Contraseña</FormLabel>
+                <Link
+                  href='/forgot-password'
+                  className='ml-auto inline-block text-sm underline'
+                >
+                  Olvidaste tu contraseña?
+                </Link>
+              </div>
               <FormControl>
                 <Input
                   {...field}
                   disabled={isPending}
                   type='password'
                   placeholder='Ingresa tu contraseña'
-                  className='dark:border-graphite-deep'
                 />
               </FormControl>
               <FormMessage />
@@ -122,16 +122,13 @@ export const RegisterForm = () => {
           name='confirmPassword'
           render={({ field }) => (
             <FormItem>
-              <FormLabel className='max-sm:text-lg sm:text-base'>
-                Confirmar Contraseña
-              </FormLabel>
+              <FormLabel>Confirmar Contraseña</FormLabel>
               <FormControl>
                 <Input
                   {...field}
                   disabled={isPending}
                   type='password'
                   placeholder='Repite tu contraseña'
-                  className='dark:border-graphite-deep'
                 />
               </FormControl>
               <FormMessage />
@@ -142,8 +139,7 @@ export const RegisterForm = () => {
         <Button
           disabled={isPending}
           type='submit'
-          variant='outline'
-          className='w-full text-lg'
+          className='w-full'
         >
           Registrar
         </Button>

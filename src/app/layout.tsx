@@ -4,7 +4,6 @@ import "@/styles/globals.css";
 
 // Componentes de Contexto
 import { ThemeProvider } from "@/components/context/ThemeProvider";
-import { Navbar } from "./_components/Navbar";
 
 // Utilidades
 import { Analytics } from "@vercel/analytics/react";
@@ -80,7 +79,6 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          <Navbar />
           {children}
           <Analytics />
         </ThemeProvider>
