@@ -69,7 +69,7 @@ export default function RootLayout({
     <html lang='es'>
       <body
         className={cn(
-          "min-h-screen font-sans antialiased bg-[url('/patterns/bubbles.svg')] bg-lime-50/20",
+          "min-h-screen font-sans antialiased bg-[url('/patterns/bubbles.svg')] bg-lime-50/20 dark:bg-none",
           fontSans.variable
         )}
       >
