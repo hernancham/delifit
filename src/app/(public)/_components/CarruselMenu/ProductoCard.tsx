@@ -6,7 +6,7 @@ import { EyeIcon } from "lucide-react";
 
 export const ProductoCard = ({ producto }: { producto: Producto }) => {
   return (
-    <div className='flex flex-col gap-4 py-8 px-6 mx-4 rounded-2xl border border-green-300 shadow-xl hover:shadow-2xl transition-shadow duration-300'>
+    <div className='flex flex-col gap-4 py-2 px-6 mx-6 rounded-2xl border border-green-300 shadow-xl hover:shadow-2xl transition-shadow duration-300'>
       <div className='mb-4 flex justify-center h-[250px]'>
         <img
           src={producto.img_url}
@@ -16,7 +16,7 @@ export const ProductoCard = ({ producto }: { producto: Producto }) => {
       </div>
       <div className='flex flex-col items-center gap-4'>
         <div className='text-center'>
-          <h1 className='text-2xl font-bold text-green-700'>
+          <h1 className='text-xl font-bold text-green-700'>
             {producto.nombre}
           </h1>
           {/* Puedes añadir más detalles aquí si lo deseas */}
