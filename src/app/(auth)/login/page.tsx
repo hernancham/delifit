@@ -12,7 +12,7 @@ export default function LoginPage({
     <div className='w-full min-h-screen grid grid-cols-1 lg:grid-cols-2 py-4'>
       <div className='hidden bg-muted lg:block'>
         <img
-          src='/media/img1_register.jpg'
+          src='/media/img1_login.webp'
           alt='Image'
           width={1920}
           height={1080}

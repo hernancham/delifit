@@ -8,7 +8,7 @@ export default function RegisterPage() {
       </div>
       <div className='hidden bg-muted lg:block'>
         <img
-          src='/media/img1_register.jpg'
+          src='/media/img1_register.webp'
           alt='Image'
           width={1920}
           height={1080}
