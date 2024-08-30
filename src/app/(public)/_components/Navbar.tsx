@@ -1,66 +1,62 @@
-import { DelifitLogo } from "@/components/custom/DelifitLogo";
 import Link from "next/link";
+import { auth } from "@/auth";
 
-export const Navbar = () => {
+import { DelifitLogo } from "@/components/custom/DelifitLogo";
+import { ThemeToggler } from "@/components/custom/ThemeToggler";
+import { OptionsAuth } from "./OptionsAuth";
+import { cn } from "@/lib/utils";
+
+const navbarLinks = [
+  { path: "/dashboard", label: "Dashboard" },
+  { path: "/admin", label: "Admin" },
+  { path: "/mi-cuenta", label: "Mi cuenta" },
+  { path: "/preguntas-frecuentes", label: "FAQ" },
+  { path: "/mi-cuenta", label: "Mi cuenta" },
+];
+
+export const Navbar = async () => {
+  const session = await auth();
   return (
-    <header className='bg-white'>
-      <div className='mx-auto flex h-16 max-w-screen-xl items-center gap-8 px-4 sm:px-6 lg:px-8'>
-        <DelifitLogo className='bg-lime-100 rounded-full' />
-        <div className='flex flex-1 items-center justify-end md:justify-between'>
-          <nav className='hidden md:block'>
-            <ul className='flex items-center gap-6 text-sm'>
-              <li>
-                <Link
-                  className='text-gray-500 transition hover:text-gray-500/75'
-                  href='/dashboard'
-                >
-                  Dashboard
-                </Link>
-              </li>
-
-              <li>
-                <Link
-                  className='text-gray-500 transition hover:text-gray-500/75'
-                  href='/admin'
-                >
-                  Admin
-                </Link>
-              </li>
-
-              <li>
-                <a
-                  className='text-gray-500 transition hover:text-gray-500/75'
-                  href='/mi-cuenta'
-                >
-                  Mi cuenta
-                </a>
-              </li>
-            </ul>
-          </nav>
-
-          <div className='flex items-center gap-4'>
-            <div className='sm:flex sm:gap-4'>
+    <header className='bg-lime-100 dark:bg-gray-800'>
+      <div className='mx-auto max-w-7xl px-2 sm:px-6 lg:px-8'>
+        <div className='relative flex h-16 items-center justify-between'>
+          <div className='absolute inset-y-0 left-0 flex items-center sm:hidden'>
+            {/* <SheetMenu navbarLinks={navbarLinks} /> */}
+          </div>
+          <div className='flex flex-1 items-center justify-center sm:items-stretch sm:justify-start'>
+            <div className='flex flex-shrink-0 items-center'>
+              <DelifitLogo className='bg-lime-50 rounded-full size-10' />
+            </div>
+            <div className='hidden sm:ml-6 sm:flex items-center '>
+              <nav>
+                <ul className='flex items-center space-x-4'>
+                  {navbarLinks.map((link) => (
+                    <li key={link.path}>
+                      <Link
+                        className='rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white'
+                        href={link.path}
+                      >
+                        {link.label}
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              </nav>
+            </div>
+          </div>
+          <div className='absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0 gap-2'>
+            <ThemeToggler className='' />
+            {session ? (
+              <OptionsAuth user={session.user} />
+            ) : (
               <Link
                 className='block rounded-md bg-lime-600 px-5 py-2.5 text-sm font-medium text-white transition hover:bg-lime-700'
                 href='/login'
               >
                 Login
               </Link>
-
-              <Link
-                className='block rounded-md bg-lime-600 px-5 py-2.5 text-sm font-medium text-white transition hover:bg-lime-700'
-                href='/logout'
-              >
-                Logout
-              </Link>
-
-              <Link
-                className='hidden rounded-md bg-gray-100 px-5 py-2.5 text-sm font-medium text-lime-600 transition hover:text-lime-600/75 sm:block'
-                href='/register'
-              >
-                Register
-              </Link>
-            </div>
+            )}
+            {/* <ShopCar /> */}
           </div>
         </div>
       </div>
