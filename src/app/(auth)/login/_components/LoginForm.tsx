@@ -19,6 +19,7 @@ import { useRouter } from "next/navigation";
 import { useState, useTransition } from "react";
 
 import { defaultRoute } from "@/auth/routes";
+import Link from "next/link";
 
 export const LoginForm = () => {
   const [error, setError] = useState<string | null>(null);
@@ -74,7 +75,15 @@ export const LoginForm = () => {
           name='password'
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Contraseña</FormLabel>
+              <div className='flex items-center'>
+                <FormLabel>Contraseña</FormLabel>
+                <Link
+                  href='/forgot-password'
+                  className='ml-auto inline-block text-sm underline'
+                >
+                  Olvidaste tu contraseña?
+                </Link>
+              </div>
               <FormControl>
                 <Input
                   {...field}
