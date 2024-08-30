@@ -1,4 +1,4 @@
-import { DelifitLogo } from "@/components/custom/LogoDelifit";
+import { DelifitLogo } from "@/components/custom/DelifitLogo";
 import Link from "next/link";
 
 export const Navbar = () => {

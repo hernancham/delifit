@@ -11,7 +11,7 @@ import {
 } from "@/components/ui/card";
 import { RegisterForm } from "./RegisterForm";
 import { loginRoute } from "@/auth/routes";
-import { DelifitLogo } from "@/components/custom/LogoDelifit";
+import { DelifitLogo } from "@/components/custom/DelifitLogo";
 
 export const RegisterCard = () => {
   return (

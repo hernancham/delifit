@@ -13,7 +13,7 @@ import { SocialButton } from "./SocialButton";
 import { GoogleLogo } from "@/components/logos";
 import { registerRoute } from "@/auth/routes";
 import { LoginForm } from "./LoginForm";
-import { DelifitLogo } from "@/components/custom/LogoDelifit";
+import { DelifitLogo } from "@/components/custom/DelifitLogo";
 
 interface LoginCardProps {
   isVerified: boolean;
