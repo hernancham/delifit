@@ -19,6 +19,23 @@ const config = {
     },
     extend: {
       colors: {
+        green_p: {
+          light: "#dcefe2",
+          DEFAULT: "#dcefe2",
+          dark: "#bbdfc8",
+          deep: "#a1d80a",
+        },
+        graphite: {
+          light: "#e7e7e7",
+          DEFAULT: "#dfdfdf",
+          dark: "#3d3d3d",
+          deep: "#262626",
+        },
+        beige: {
+          light: "#fdffe2",
+          DEFAULT: "#f2ecd5",
+          dark: "#53650f", // Puede cambiar
+        },
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",

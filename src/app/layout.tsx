@@ -4,6 +4,7 @@ import "@/styles/globals.css";
 
 // Componentes de Contexto
 import { ThemeProvider } from "@/components/context/ThemeProvider";
+import { QueryProvider } from "@/components/context/QueryProvider";
 
 // Utilidades
 import { Analytics } from "@vercel/analytics/react";
@@ -73,15 +74,17 @@ export default function RootLayout({
           fontSans.variable
         )}
       >
-        <ThemeProvider
-          attribute='class'
-          defaultTheme='system'
-          enableSystem
-          disableTransitionOnChange
-        >
-          {children}
-          <Analytics />
-        </ThemeProvider>
+        <QueryProvider>
+          <ThemeProvider
+            attribute='class'
+            defaultTheme='system'
+            enableSystem
+            disableTransitionOnChange
+          >
+            {children}
+            <Analytics />
+          </ThemeProvider>
+        </QueryProvider>
       </body>
     </html>
   );

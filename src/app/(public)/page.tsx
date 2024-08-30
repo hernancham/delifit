@@ -1,14 +1,15 @@
-import Image from "next/image";
+import { Inicio } from "./_components/Inicio/Inicio";
+import { Banner } from "./_components/Banner/Banner";
+import { Funciones } from "./_components/Funciones/Funciones";
+import { CarruselMenu } from "./_components/CarruselMenu/CarruselMenu";
 
 export default function Home() {
   return (
-    <main className='flex min-h-screen flex-col items-center justify-between p-24'>
-      <Image
-        src='/assets/delifit_logo.svg'
-        width={200}
-        height={200}
-        alt='logo'
-      />
+    <main>
+      <Inicio />
+      <Banner />
+      <Funciones />
+      <CarruselMenu />
     </main>
   );
 }

@@ -222,6 +222,7 @@ model Producto {
   id_producto            String                   @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
   nombre                 String
   descripcion            String?
+  img_url                String
   id_cat_producto        String?                  @db.Uuid
   activo                 Boolean                  @default(true)
   createdAt              DateTime?                @default(now()) @db.Timestamptz(6)
@@ -239,6 +240,7 @@ model Producto_tamanio {
   id_producto_tamanio            String                           @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
   id_producto                    String?                          @db.Uuid
   tamanio                        String
+  img_url                        String?
   precio_base                    Float
   precio_puntos                  Int?
   activo                         Boolean                          @default(true)
