@@ -1,9 +1,10 @@
+import Link from "next/link";
 import { RegisterCard } from "./_components/RegisterCard";
 
 export default function RegisterPage() {
   return (
     <div className='w-full min-h-screen grid grid-cols-1 lg:grid-cols-2 py-4'>
-      <div className='flex items-center justify-center'>
+      <div className='flex flex-col items-center justify-center'>
         <RegisterCard />
       </div>
       <div className='hidden bg-muted lg:block'>
