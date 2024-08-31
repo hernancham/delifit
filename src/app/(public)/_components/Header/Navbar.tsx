@@ -16,8 +16,8 @@ const navbarLinks = [
 export const Navbar = async () => {
   const session = await auth();
   return (
-    <header className='bg-lime-100 dark:bg-gray-800'>
-      <div className='mx-auto max-w-7xl px-2 sm:px-6 lg:px-8'>
+    <header className=' bg-lime-100 dark:bg-gray-800'>
+      <div className=' mx-auto max-w-7xl px-2 sm:px-6 lg:px-8'>
         <div className='relative flex h-16 items-center justify-between'>
           <div className='absolute inset-y-0 left-0 flex items-center sm:hidden'>
             {/* <SheetMenu navbarLinks={navbarLinks} /> */}

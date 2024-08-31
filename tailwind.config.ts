@@ -21,10 +21,11 @@ const config = {
       colors: {
         green_p: {
           light: "#dcefe2",
-          DEFAULT: "#dcefe2",
+          DEFAULT: "#d1e29b",
           dark: "#bbdfc8",
           deep: "#a1d80a",
         },
+
         graphite: {
           light: "#e7e7e7",
           DEFAULT: "#dfdfdf",

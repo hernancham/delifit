@@ -70,7 +70,7 @@ export const CarruselMenu = () => {
 
   if (isLoading) {
     return (
-      <div className='py-8 bg-green_p-dark dark:bg-graphite-deep text-black dark:text-white'>
+      <div className='py-2 bg-green_p-dark dark:bg-graphite-deep text-black dark:text-white'>
         <div className='container'>
           <div className='mb-10 space-y-5'>
             <h1 className='text-center text-4xl font-bold'>Nuestro menú</h1>
@@ -118,7 +118,7 @@ export const CarruselMenu = () => {
   }
 
   return (
-    <div className='py-12 bg-green-100 dark:bg-green-900 text-gray-800 dark:text-gray-200'>
+    <div className='bg-green-100 dark:bg-green-900 text-gray-800 dark:text-gray-200'>
       <div className='container mx-auto'>
         <div className='text-center mb-12'>
           <h1 className='text-5xl font-extrabold text-green-700 dark:text-green-300'>
