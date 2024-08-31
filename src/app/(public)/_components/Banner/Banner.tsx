@@ -1,13 +1,13 @@
 export const Banner = () => {
   return (
-    <section className='bg-green_p dark:bg-neutral-800'>
+    <section className='bg-green_p-lightv dark:bg-neutral-700'>
       <div className='mx-auto w-full max-w-7xl px-5 md:px-10'>
         <div className='grid gap-12 sm:gap-20 lg:grid-cols-2'>
           <div className='flex justify-center lg:justify-start'>
             <svg
               xmlns='http://www.w3.org/2000/svg'
               id='sw-js-blob-svg'
-              viewBox='0 0 100 100'
+              viewBox='-45 -41 85 82'
               version='1.1'
               width='100%'
               height='100%'
@@ -21,8 +21,8 @@ export const Banner = () => {
                 >
                   <image
                     href='/media/img2_homepage.webp'
-                    width='85%'
-                    height='85%'
+                    width='100%'
+                    height='100%'
                     preserveAspectRatio='xMidYMid slice'
                   />
                 </pattern>
@@ -31,8 +31,8 @@ export const Banner = () => {
               <path
                 fill='url(#imgPattern)'
                 d='M25.8,-35.5C32.3,-30.7,35.7,-21.7,37.1,-13.1C38.4,-4.5,37.7,3.8,35.6,12C33.6,20.2,30.1,28.4,23.9,33.6C17.7,38.8,8.9,41.1,0.4,40.5C-8.1,40,-16.1,36.7,-23.6,31.9C-31.1,27.1,-38,20.8,-41.7,12.7C-45.5,4.6,-46.2,-5.3,-43.4,-14.1C-40.6,-23,-34.3,-30.8,-26.5,-35.1C-18.7,-39.5,-9.3,-40.6,0.1,-40.8C9.6,-41,19.2,-40.3,25.8,-35.5Z'
-                transform='translate(50 50)'
-                stroke-width='1'
+                transform='translate(0 0)'
+                strokeWidth='1'
                 style={{ transition: "all 0.3s" }}
                 stroke='none'
               />

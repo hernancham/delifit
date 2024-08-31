@@ -21,6 +21,7 @@ const config = {
       colors: {
         green_p: {
           light: "#dcefe2",
+          lightv: "#e4eec4",
           DEFAULT: "#d1e29b",
           dark: "#bbdfc8",
           deep: "#a1d80a",
