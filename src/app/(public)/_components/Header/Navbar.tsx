@@ -3,13 +3,12 @@ import { auth } from "@/auth";
 
 import { DelifitLogo } from "@/components/custom/DelifitLogo";
 import { ThemeToggler } from "@/components/custom/ThemeToggler";
-import { OptionsAuth } from "./OptionsAuth";
-import { cn } from "@/lib/utils";
+import { OptionsAuth } from "../OptionsAuth";
 
 const navbarLinks = [
   { path: "/dashboard", label: "Dashboard" },
   { path: "/admin", label: "Admin" },
-  { path: "/mi-cuenta", label: "Mi cuenta" },
+  { path: "/sobre-nosotros", label: "Sobre nosotros" },
   { path: "/preguntas-frecuentes", label: "FAQ" },
   { path: "/mi-cuenta", label: "Mi cuenta" },
 ];
