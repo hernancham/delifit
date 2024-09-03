@@ -1,25 +1,32 @@
 import Link from "next/link";
+import { Button } from "@/components/ui/button";
+import { ArrowRight } from "lucide-react";
 import "/src/styles/globals.css";
 
 export const Inicio = () => {
   return (
-    <header className='hero-background bg-green h-screen bg-cover bg-center bg-no-repeat relative'>
+    <header className='hero-background bg-scroll bg-green h-screen bg-cover bg-center bg-no-repeat'>
       <div className='mx-auto w-full max-w-7xl px-5 py-24 md:px-10 md:py-24 relative z-10'>
-        <div className='flex flex-col items-center justify-center text-center'>
-          <div className='font-quicksand mb-12 text-5xl font-bold text-white md:text-6xl leading-relaxed'>
+        <div className='flex flex-col items-center justify-center text-center space-y-8'>
+          <div className='font-quicksand text-5xl text-shadow shadow-lime-950 md:text-7xl font-bold py-5 text-white leading-tight'>
             ENGRÍETE <span className='text-green_p-deep'>SALUDABLE</span>
           </div>
-
-          <p className='font-quicksand mb-10 max-w-lg text-2xl text-white sm:text-4xl md:mb-10 lg:mb-12'>
+          <p className='font-quicksand max-w-lg text-3xl text-white py-2 sm:text-4xl lg:text-5xl'>
+            {" "}
             Disfruta la aventura de comer delicioso y saludable
           </p>
-
-          <Link
-            href='/productos'
-            className='mb-6 w-56 rounded-xl bg-gray-800 px-6 py-4 text-center font-semibold text-white text-xl hover:bg-gray-600'
+          <Button
+            asChild
+            className='group relative overflow-hidden bg-primary text-primary-foreground hover:bg-primary/90 transition-all duration-300 ease-in-out transform hover:scale-105 text-xl py-6 px-8'
           >
-            ¡Quiero pedir!
-          </Link>
+            <Link href='/productos'>
+              <span className='relative z-10 flex items-center'>
+                ¡Quiero pedir!
+                <ArrowRight className='ml-3 h-6 w-6 transition-transform duration-300 ease-in-out group-hover:translate-x-1' />
+              </span>
+              <span className='absolute bottom-0 left-0 w-full h-1 bg-secondary transition-all duration-300 ease-in-out transform scale-x-0 group-hover:scale-x-100' />
+            </Link>
+          </Button>
         </div>
       </div>
       <div className='absolute bottom-0 left-0 right-0 z-0'>
@@ -43,11 +50,11 @@ export const Inicio = () => {
             >
               <stop
                 offset='0'
-                stopColor='#e4eec4'
+                stopColor='#dcefe2'
               />
               <stop
                 offset='0.99'
-                stopColor='#e4eec4'
+                stopColor='#dcefe2'
               />
             </linearGradient>
             <linearGradient
@@ -61,7 +68,7 @@ export const Inicio = () => {
             >
               <stop
                 offset='0'
-                stopColor='#e4eec4'
+                stopColor='#dcefe2'
               />
               <stop offset='0.99' />
             </linearGradient>
@@ -98,18 +105,18 @@ export const Inicio = () => {
           <path
             d='M0,413s77.49-38.25,129.46-41.51c211.75-13.28,290,112.59,387.64,146.42,246,99.43,269.4-100,457.8-107.87,110.12-4.61,169.7,63.18,264.68,62.19S1400,410,1400,410V570H.24Z'
             style={{
-              fill: "#e4eec4",
+              fill: "#dcefe2",
               opacity: 0.639999985694885,
               isolation: "isolate",
             }}
           />
           <path
             d='M0,477.2S139.1,338.88,273.1,342c208.39,4.8,195.33,179.66,371.76,175.93,72.64-4.3,116.11-51.37,169.32-81.88,128.51-73.69,202.68,16.26,268.68,31.81,99.44,23.42,127.41-24,227.18-79.35,13.4-7.43,41.87-22.45,90-12.45V570H.24Z'
-            style={{ fill: "#e4eec4", opacity: 0.29, isolation: "isolate" }}
+            style={{ fill: "#dcefe2", opacity: 0.29, isolation: "isolate" }}
           />
           <path
             d='M1239.6,472.2c-20.9,0.2-40-2.9-58.3-7.8c-27.2,10.6-56.5,13.3-98.4,3.4c-38.3-9-79.3-43-132-55.7C784,435,752.2,612.9,517.1,517.9c-93.9-32.5-169.8-150.1-363.7-147.3C69.2,409.4,2.9,474.3,0.1,477.1L0.2,570H1400V410C1400,410,1334.6,471.2,1239.6,472.2z'
-            style={{ fill: "#e4eec4", isolation: "isolate" }}
+            style={{ fill: "#dcefe2", isolation: "isolate" }}
           />
         </svg>
       </div>

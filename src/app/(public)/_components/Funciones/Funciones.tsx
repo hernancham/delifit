@@ -6,8 +6,8 @@ export const Funciones = () => {
   const router = useRouter();
   return (
     <>
-      <div className='bg-green_p-light dark:bg-graphite-dark px-8 py-2 pb-12'>
-        <h1 className='font-semibold text-3xl md:text-4xl text-center py-6 px-4 md:px-8 text-green-800 dark:text-green-300'>
+      <div className='bg-slate-400 dark:bg-graphite-dark px-8 py-2 pb-12'>
+        <h1 className='font-semibold text-3xl md:text-5xl text-center my-10 px-4 md:px-8 text-blue-950 dark:text-green-300'>
           ¿Cómo funciona?
         </h1>
 
@@ -96,14 +96,14 @@ export const Funciones = () => {
           </div>
         </div>
       </div>
-      <div className='bg-slate-500 dark:bg-gray-800'>
+      <div className='bg-slate-400 dark:bg-gray-800'>
         <svg
           xmlns='http://www.w3.org/2000/svg'
           viewBox='0 0 1400 65'
           className='w-full h-auto transform rotate-180'
         >
           <path
-            className='fill-green_p-dark dark:fill-graphite-dark'
+            className='fill-yellow-50 dark:fill-graphite-dark'
             d='M1400,0H0v2.3c24.8-2.4,52.2,12,104.5,33.4c57.4,23.5,117.1,1.8,191.3-15.4c38-8.8,95.9-28.6,141.2-7.7  
       C491.3,37.6,553.7,38,593.3,30c90.2-18.2,134.9-13.9,183.7,4c97.9,35.9,105.3-15.1,224.5,22c57.4,17.9,151-9,173.8-17.9  
       c82.4-32.3,117.9,3.1,224.7,2.5V0z'

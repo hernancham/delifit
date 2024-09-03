@@ -2,31 +2,32 @@
 
 import { Button } from "@/components/ui/button";
 import { Producto } from "@/types/db";
-import { EyeIcon } from "lucide-react";
+import { EyeIcon, ShoppingBasket } from "lucide-react";
+/* import { useCartStore } from "@/store/shopcart"; */
 
 export const ProductoCard = ({ producto }: { producto: Producto }) => {
+  /* const addToCartProducto = useCartStore((state) => state.addToCartProducto); */
+
   return (
-    <div className='flex flex-col gap-4 py-2 px-6 mx-6 rounded-2xl border border-green-300 shadow-xl hover:shadow-2xl transition-shadow duration-300'>
-      <div className='mb-4 flex justify-center h-[250px]'>
+    <div className='min-w-[240px] max-w-[300px] bg-beige-light dark:bg-neutral-700 rounded-xl duration-500 hover:scale-105 hover:shadow-xl shadow-md flex flex-col justify-between'>
+      <div className='relative'>
         <img
           src={producto.img_url}
           alt={producto.nombre}
-          className='rounded-lg w-auto h-full object-cover border-4 border-green-200 shadow-lg'
+          className='w-full aspect-square object-cover rounded-t-xl'
         />
+        <div className='absolute inset-0 bg-gradient-to-t from-beige-light via-transparent to-transparent rounded-t-xl dark:from-graphite-deep'></div>
+        <h3 className='absolute inset-x-0 bottom-0 block text-xl font-bold capitalize text-black dark:text-white p-4 shadow text-center'>
+          {producto.nombre}
+        </h3>
       </div>
-      <div className='flex flex-col items-center gap-4'>
-        <div className='text-center'>
-          <h1 className='text-xl font-bold text-green-700'>
-            {producto.nombre}
-          </h1>
-          {/* Puedes añadir más detalles aquí si lo deseas */}
-        </div>
+      <div className='flex flex-col items-center gap-2 p-2'>
         <Button
           onClick={() =>
-            // Acción para el botón, por ejemplo abrir un modal con más detalles del producto
+            // Acción para el botón, abrir un modal con más detalles del producto
             {}
           }
-          className='bg-green-500 text-white w-full hover:bg-green-600 dark:bg-green-700 dark:hover:bg-green-800 transition-colors duration-300'
+          className='bg-gray-700 text-white w-full hover:bg-gray-900 dark:bg-gray-700 dark:hover:bg-gray-900 transition-colors duration-300'
         >
           <EyeIcon className='size-6 mr-2' /> Ver detalles
         </Button>

@@ -83,6 +83,6 @@
   background-image: url(/media/img1_homepage.webp);
   background-size: cover;
   background-position: center;
-  filter: brightness(0.7); /* Reduce el brillo al 70% */
+  filter: brightness(0.55);
   z-index: -1; /* Coloca el fondo detrás del contenido */
 }

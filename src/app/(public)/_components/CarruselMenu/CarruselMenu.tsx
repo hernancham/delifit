@@ -53,17 +53,17 @@ export const CarruselMenu = () => {
   const responsive = {
     desktop: {
       breakpoint: { max: 3000, min: 1024 },
-      items: 3,
+      items: 4,
       slidesToSlide: 1, // opcional, por defecto es 1
     },
     tablet: {
       breakpoint: { max: 1024, min: 464 },
-      items: 2,
+      items: 3,
       slidesToSlide: 1, // opcional, por defecto es 1
     },
     mobile: {
       breakpoint: { max: 464, min: 0 },
-      items: 1,
+      items: 2,
       slidesToSlide: 1, // opcional, por defecto es 1
     },
   };
@@ -73,7 +73,14 @@ export const CarruselMenu = () => {
       <div className='py-2 bg-green_p-dark dark:bg-graphite-deep text-black dark:text-white'>
         <div className='container'>
           <div className='mb-10 space-y-5'>
-            <h1 className='text-center text-4xl font-bold'>Nuestro menú</h1>
+            <div className='text-center mb-12'>
+              <h1 className='text-5xl font-extrabold text-cyan-900 dark:text-red-200'>
+                Nuestro menú
+              </h1>
+              <p className='text-lg mt-2 text-gray-600 dark:text-gray-400'>
+                Descubre nuestra variedad de productos saludables y deliciosos.
+              </p>
+            </div>
             <div className='my-6 px-8 md:px-16 lg:px-24'>
               <Carousel
                 responsive={responsive}
@@ -118,10 +125,10 @@ export const CarruselMenu = () => {
   }
 
   return (
-    <div className='bg-green-100 dark:bg-green-900 text-gray-800 dark:text-gray-200'>
+    <div className='pb-10 pt-4 bg-yellow-50 dark:bg-green-900 text-gray-800 dark:text-gray-200'>
       <div className='container mx-auto'>
         <div className='text-center mb-12'>
-          <h1 className='text-5xl font-extrabold text-green-700 dark:text-green-300'>
+          <h1 className='text-5xl font-extrabold text-cyan-900 dark:text-red-200'>
             Nuestro menú
           </h1>
           <p className='text-lg mt-2 text-gray-600 dark:text-gray-400'>
