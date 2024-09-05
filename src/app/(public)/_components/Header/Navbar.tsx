@@ -3,13 +3,12 @@ import { auth } from "@/auth";
 
 import { DelifitLogo } from "@/components/custom/DelifitLogo";
 import { ThemeToggler } from "@/components/custom/ThemeToggler";
-import { OptionsAuth } from "./OptionsAuth";
-import { cn } from "@/lib/utils";
+import { OptionsAuth } from "../OptionsAuth";
 
 const navbarLinks = [
   { path: "/dashboard", label: "Dashboard" },
   { path: "/admin", label: "Admin" },
-  { path: "/mi-cuenta", label: "Mi cuenta" },
+  { path: "/sobre-nosotros", label: "Sobre nosotros" },
   { path: "/preguntas-frecuentes", label: "FAQ" },
   { path: "/mi-cuenta", label: "Mi cuenta" },
 ];
@@ -18,7 +17,7 @@ export const Navbar = async () => {
   const session = await auth();
   return (
     <header className='bg-lime-100 dark:bg-gray-800'>
-      <div className='mx-auto max-w-7xl px-2 sm:px-6 lg:px-8'>
+      <div className=' mx-auto max-w-7xl px-2 sm:px-6 lg:px-8'>
         <div className='relative flex h-16 items-center justify-between'>
           <div className='absolute inset-y-0 left-0 flex items-center sm:hidden'>
             {/* <SheetMenu navbarLinks={navbarLinks} /> */}
