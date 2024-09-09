@@ -31,18 +31,26 @@ export const ThemeToggler = ({
   if (!mounted) {
     return null; // Or a loader, or whatever fallback you prefer
   }
+
+  const Themes = {
+    light: theme === "light",
+    system: theme === "system",
+    dark: theme === "dark",
+  };
+
   if (isDropDown) {
     return (
       <DropdownMenu>
         <DropdownMenuTrigger asChild>
           <button
             className={cn(
-              "inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors disabled:pointer-events-none disabled:opacity-50",
+              "bg-lime-300 dark:bg-lime-700 rounded-full m-1",
               className
             )}
           >
-            <Sun className='h-[1.2rem] w-[1.2rem] rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0 stroke-neutral-600 hover:stroke-primary dark:stroke-neutral-500 duration-200 dark:hover:stroke-white' />
-            <Moon className='absolute h-[1.2rem] w-[1.2rem] rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100 stroke-neutral-600 hover:stroke-primary dark:stroke-neutral-500 duration-200 dark:hover:stroke-white' />
+            {Themes.light && <Sun className='stroke-1 size-4 m-1' />}
+            {Themes.system && <Monitor className='stroke-1 size-4 m-1' />}
+            {Themes.dark && <Moon className='stroke-1 size-4 m-1' />}
             <span className='sr-only'>Toggle theme</span>
           </button>
         </DropdownMenuTrigger>
@@ -72,49 +80,42 @@ export const ThemeToggler = ({
   return (
     <div
       className={cn(
-        "flex flex-row space-x-2 items-center rounded-full border p-1",
+        "flex flex-row space-x-1 items-center rounded-full border border-transparent p-1",
         className
       )}
     >
       <button
-        className={cn(
-          theme === "light" ? "bg-neutral-200 rounded-full" : "bg-transparent",
-          "p-1"
-        )}
         onClick={() => setTheme("light")}
+        className={
+          Themes.light
+            ? "bg-lime-300 rounded-full"
+            : "hover:bg-lime-200 dark:hover:bg-lime-900 bg-transparent rounded-full"
+        }
       >
-        <Sun
-          size={18}
-          className='stroke-1'
-        />
+        <Sun className='stroke-1 size-4 m-1' />
+        <span className='sr-only'>Light theme</span>
       </button>
-
       <button
-        className={cn(
-          theme === "system"
-            ? "bg-neutral-200 dark:bg-neutral-700 rounded-full"
-            : "bg-transparent",
-          "p-1"
-        )}
         onClick={() => setTheme("system")}
+        className={
+          Themes.system
+            ? "bg-lime-300 dark:bg-lime-700 rounded-full"
+            : "hover:bg-lime-200 dark:hover:bg-lime-900 bg-transparent rounded-full"
+        }
       >
-        <Monitor
-          size={18}
-          className='stroke-1'
-        />
+        <Monitor className='stroke-1 size-4 m-1' />
+        <span className='sr-only'>System theme</span>
       </button>
-
       <button
-        className={cn(
-          theme === "dark" ? "bg-neutral-700 rounded-full" : "bg-transparent",
-          "p-1"
-        )}
         onClick={() => setTheme("dark")}
+        className={
+          Themes.dark
+            ? "bg-lime-700 rounded-full"
+            : " hover:bg-lime-200 dark:hover:bg-lime-900 bg-transparent rounded-full"
+        }
       >
-        <Moon
-          size={18}
-          className='stroke-1'
-        />
+        <Moon className='stroke-1 size-4 m-1' />
+        <span className='sr-only'>Dark theme</span>
       </button>
     </div>
   );
