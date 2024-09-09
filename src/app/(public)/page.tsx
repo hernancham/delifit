@@ -1,4 +1,4 @@
-import { Inicio } from "./_components/Inicio/Inicio";
+import { Inicio } from "./_components/Inicio";
 import { Banner } from "./_components/Banner/Banner";
 import { Funciones } from "./_components/Funciones/Funciones";
 import { CarruselMenu } from "./_components/CarruselMenu/CarruselMenu";

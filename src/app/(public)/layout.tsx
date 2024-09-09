@@ -1,9 +1,9 @@
-import { Navbar } from "./_components/Header/Navbar";
-import { Footer } from "./_components/Footer/Footer";
+import { Navbar } from "./_components/Navbar";
+import { Footer } from "./_components/Footer";
 
 export default function Layout({ children }: { children: React.ReactNode }) {
   return (
-    <section className=''>
+    <section className='w-full'>
       <Navbar />
       {children}
       <Footer />
