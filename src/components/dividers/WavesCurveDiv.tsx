@@ -1,14 +1,14 @@
 import { cn } from "@/lib/utils";
 
-interface WaveCurveOpacityDivProps {
+interface WavesCurveDivProps {
   side?: "top" | "bottom";
   className?: string;
 }
 
-export const WaveCurveOpacityDiv = ({
+export const WavesCurveDiv = ({
   side = "top",
   className,
-}: WaveCurveOpacityDivProps) => {
+}: WavesCurveDivProps) => {
   return (
     <div
       className={cn("absolute inset-x-0 -z-10", {
