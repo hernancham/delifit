@@ -1,5 +1,7 @@
-import { auth } from "@/auth";
 import { NextResponse } from "next/server";
+import { prisma } from "@/lib/prisma";
+import { auth } from "@/auth";
+import { UserRole } from "@prisma/client";
 
 export const GET = auth(async function GET(request) {
   const session = request.auth;

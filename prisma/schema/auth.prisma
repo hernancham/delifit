@@ -21,7 +21,7 @@ model User {
   activo Boolean @default(true)
 
   createdAt DateTime @default(now()) @db.Timestamptz(6)
-  updateAt  DateTime @updatedAt @db.Timestamptz(6)
+  updatedAt DateTime @updatedAt @db.Timestamptz(6)
 
   @@unique([email, documento, telefono], map: "datos_usuario_unicos")
   @@map("usuario")
